@@ -1,0 +1,21 @@
+# Scribble Club
+
+> A real-time multiplayer drawing and guessing game for browsers.
+
+Scribble Club lets players create public or private rooms, invite friends with a room code, draw prompts, and guess each other's drawings.
+
+## Technology
+
+- React and TypeScript client, built with Vite.
+- Node.js and Express server.
+- Socket.IO for real-time rooms, drawing synchronization, and chat.
+
+## Game behavior
+
+- The server controls turns, word privacy, timers, guesses, and scores.
+- Room settings include player count, rounds, draw time, word choices, hints, and word mode.
+- Game rooms are stored in memory and are not persistent across server restarts.
+
+## Links
+
+- [Play Scribble Club](https://scrribleclub.onrender.com/)

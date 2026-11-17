@@ -1,19 +1,16 @@
 :root {
-  font-family: "Segoe UI", Arial, sans-serif;
-  color: #252426;
-  background: #f5f4f0;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: #211f1a;
+  background: #e8e4d9;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  --ink: #252426;
-  --muted: #858287;
-  --line: #e7e5df;
-  --paper: #fffefa;
-  --orange: #f47e58;
-  --orange-dark: #dd6743;
-  --lavender: #e8e4ff;
-  --mint: #d8f0e2;
-  --shadow: 0 16px 42px rgba(49, 42, 34, 0.06);
+  --ink: #211f1a;
+  --paper: #fffdf3;
+  --orange: #ee6b4b;
+  --orange-dark: #c9432d;
+  --hand-font: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+  --shadow: 7px 7px 0 var(--ink);
 }
 
 * {
@@ -25,9 +22,14 @@ body {
   min-height: 100vh;
   margin: 0;
   background:
-    radial-gradient(ellipse at 9% 12%, rgba(245, 220, 202, 0.22), transparent 30%),
-    radial-gradient(ellipse at 94% 24%, rgba(220, 224, 252, 0.28), transparent 31%),
-    #f5f4f0;
+    repeating-linear-gradient(
+      to bottom,
+      #fffdf3 0,
+      #fffdf3 34px,
+      rgba(77, 132, 174, 0.32) 35px,
+      #fffdf3 36px
+    ),
+    #fffdf3;
 }
 
 button,
@@ -44,13 +46,40 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 a:focus-visible {
-  outline: 3px solid rgba(244, 126, 88, 0.45);
-  outline-offset: 3px;
+  outline: 3px solid var(--orange-dark);
+  outline-offset: 4px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--hand-font);
 }
 
 .home-shell {
-  width: min(1190px, calc(100% - 64px));
+  width: min(920px, calc(100% - 48px));
+  min-height: 100vh;
+  padding: 0 42px 40px 104px;
   margin: 0 auto;
+  border-right: 3px solid var(--ink);
+  border-left: 3px solid var(--ink);
+  background:
+    linear-gradient(
+      to right,
+      transparent 0,
+      transparent 73px,
+      rgba(199, 66, 57, 0.72) 74px,
+      rgba(199, 66, 57, 0.72) 77px,
+      transparent 78px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #fffdf3 0,
+      #fffdf3 34px,
+      rgba(77, 132, 174, 0.32) 35px,
+      #fffdf3 36px
+    );
+  box-shadow: 10px 0 0 rgba(33, 31, 26, 0.16);
 }
 
 .site-header,
@@ -59,7 +88,7 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(43, 41, 38, 0.09);
+  border-bottom: 3px solid var(--ink);
 }
 
 .brand-lockup {
@@ -114,7 +143,7 @@ a:focus-visible {
 }
 
 .brand-name {
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: var(--hand-font);
   font-size: 19px;
   font-weight: 700;
   letter-spacing: -0.9px;
@@ -152,9 +181,10 @@ a:focus-visible {
 
 .connection-pill {
   padding: 9px 12px;
-  border: 1px solid #e8e5de;
-  border-radius: 999px;
-  background: rgba(255, 254, 250, 0.55);
+  border: 2px solid rgba(48, 43, 50, 0.35);
+  border-radius: 11px 14px 10px 13px;
+  background: var(--paper);
+  box-shadow: 2px 2px 0 rgba(48, 43, 50, 0.08);
 }
 
 .connection-pill > span,
@@ -210,25 +240,47 @@ a:focus-visible {
 }
 
 .home-main {
-  padding: 32px 0;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 38px 0;
 }
 
 .home-name-card {
-  max-width: 550px;
-  margin-bottom: 16px;
+  max-width: none;
+  margin-bottom: 22px;
+  text-align: center;
 }
 
 .home-section-title {
-  margin: 0 0 16px;
-  font-family: "Space Grotesk", "DM Sans", sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.6px;
+  margin: 0 0 20px;
+  color: var(--ink);
+  font-family: var(--hand-font);
+  font-size: clamp(24px, 3vw, 31px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  text-align: center;
+  transform: rotate(-0.7deg);
+}
+
+.home-section-title::after {
+  width: 58px;
+  height: 4px;
+  display: block;
+  margin: 8px auto 0;
+  border-radius: 0;
+  background: var(--orange);
+  content: "";
+  transform: rotate(-2deg);
+}
+
+.home-section-title--compact {
+  margin: 0;
 }
 
 .entry-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(380px, 0.82fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 20px;
   align-items: stretch;
 }
@@ -240,14 +292,25 @@ a:focus-visible {
 .scoreboard-card,
 .chat-card,
 .canvas-card {
-  border: 1px solid rgba(47, 42, 36, 0.08);
-  border-radius: 12px;
-  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  background: rgba(255, 253, 243, 0.94);
   box-shadow: var(--shadow);
 }
 
 .entry-card {
-  padding: 25px 28px 21px;
+  padding: 27px 30px 25px;
+}
+
+.home-name-card.entry-card {
+  padding: 0 8px 10px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-shell .entry-card:not(.home-name-card) .home-section-title {
+  margin-bottom: 24px;
 }
 
 .public-rooms-heading,
@@ -264,7 +327,7 @@ a:focus-visible {
 .lobby-settings-heading h2,
 .section-title-line h2 {
   margin: 0;
-  font-family: "Space Grotesk", "DM Sans", sans-serif;
+  font-family: var(--hand-font);
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.6px;
@@ -281,10 +344,10 @@ a:focus-visible {
   width: 100%;
   height: 43px;
   padding: 0 13px;
-  border: 1px solid #e9e6df;
-  border-radius: 6px;
+  border: 3px solid var(--ink);
+  border-radius: 0;
   outline: none;
-  background: #fffefa;
+  background: #fffef9;
   color: var(--ink);
   font-size: 12px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -297,8 +360,39 @@ a:focus-visible {
 
 .text-input:focus,
 .chat-input-form input:focus {
-  border-color: #e9a38b;
-  box-shadow: 0 0 0 3px rgba(244, 126, 88, 0.1);
+  border-color: var(--orange-dark);
+  box-shadow: 4px 4px 0 var(--orange-dark);
+}
+
+.home-shell .text-input {
+  height: 48px;
+  padding: 0 5px;
+  border: 0;
+  border-bottom: 3px solid var(--ink);
+  background: transparent;
+  font-family: var(--hand-font);
+  font-size: 16px;
+}
+
+.home-shell .text-input::placeholder {
+  color: #777166;
+  font-family: var(--hand-font);
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.home-shell .text-input:focus {
+  border-bottom-color: var(--orange-dark);
+  box-shadow: 0 4px 0 rgba(201, 67, 45, 0.28);
+}
+
+.home-shell .field-label,
+.home-shell .setting-field > span,
+.home-shell .setting-field--range strong {
+  color: #4f4a40;
+  font-family: var(--hand-font);
+  font-size: 11px;
+  letter-spacing: 0.04em;
 }
 
 .settings-controls--compact {
@@ -354,15 +448,16 @@ a:focus-visible {
   width: 100%;
   height: 35px;
   padding: 0 26px 0 10px;
-  border: 1px solid #ece9e2;
-  border-radius: 5px;
+  border: 3px solid var(--ink);
+  border-radius: 0;
   appearance: none;
   background:
     linear-gradient(45deg, transparent 50%, #a8a39c 50%) calc(100% - 13px) 15px / 5px 5px no-repeat,
     linear-gradient(135deg, #a8a39c 50%, transparent 50%) calc(100% - 9px) 15px / 5px 5px no-repeat,
     #fffefa;
-  color: #45413f;
-  font-size: 10px;
+  color: var(--ink);
+  font-family: var(--hand-font);
+  font-size: 12px;
   cursor: pointer;
 }
 
@@ -373,16 +468,24 @@ a:focus-visible {
   justify-content: center;
   gap: 12px;
   padding: 0 17px;
-  border: 0;
-  border-radius: 6px;
-  font-size: 12px;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  font-size: 14px;
   font-weight: 700;
+  font-family: var(--hand-font);
   cursor: pointer;
+  box-shadow: 4px 4px 0 var(--ink);
   transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 }
 
 .button:hover:not(:disabled) {
-  transform: translateY(-1px);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.button:active:not(:disabled) {
+  transform: translate(1px, 2px);
+  box-shadow: none;
 }
 
 .button:disabled {
@@ -392,17 +495,16 @@ a:focus-visible {
 
 .button-primary {
   background: var(--orange);
-  box-shadow: 0 6px 14px rgba(231, 118, 82, 0.19);
   color: #fff;
 }
 
 .button-primary:hover:not(:disabled) {
   background: var(--orange-dark);
-  box-shadow: 0 8px 18px rgba(231, 118, 82, 0.25);
 }
 
 .button-dark {
   min-width: 92px;
+  box-shadow: 4px 4px 0 var(--ink);
   background: var(--ink);
   color: #fff;
 }
@@ -413,7 +515,7 @@ a:focus-visible {
 
 .button-light {
   min-height: 35px;
-  border: 1px solid #eae6df;
+  border: 3px solid var(--ink);
   background: #fffefa;
   color: #504b48;
   font-size: 10px;
@@ -424,9 +526,10 @@ a:focus-visible {
 }
 
 .side-entry-column {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
 }
 
 .join-card {
@@ -450,8 +553,8 @@ a:focus-visible {
 }
 
 .public-rooms-heading {
-  align-items: flex-start;
-  margin-bottom: 14px;
+  align-items: center;
+  margin-bottom: 18px;
 }
 
 .eyebrow-small {
@@ -459,15 +562,15 @@ a:focus-visible {
 }
 
 .public-rooms-heading h2 {
-  margin-top: 5px;
-  font-size: 17px;
+  margin-top: 0;
+  font-size: 25px;
 }
 
 .live-count {
   padding: 6px 9px;
-  border: 1px solid #e7e7dd;
-  border-radius: 999px;
-  color: #83867b;
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
   font-family: "DM Mono", monospace;
   font-size: 8px;
 }
@@ -489,7 +592,7 @@ a:focus-visible {
   gap: 10px;
   padding: 10px 0;
   border: 0;
-  border-top: 1px solid #f0eee9;
+  border-top: 1px dashed #d4cbbb;
   background: transparent;
   text-align: left;
   cursor: pointer;
@@ -507,7 +610,8 @@ a:focus-visible {
   display: grid;
   flex: 0 0 auto;
   place-items: center;
-  border-radius: 9px;
+  border: 2px solid var(--ink);
+  border-radius: 0;
   background: #eeebff;
   color: #7669bd;
   font-family: "Space Grotesk", sans-serif;
@@ -551,8 +655,9 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-top: 1px solid #f0eee9;
+  border-top: 1px dashed #d4cbbb;
   color: #aaa5a0;
+  font-family: var(--hand-font);
   text-align: center;
 }
 
@@ -600,24 +705,26 @@ a:focus-visible {
   align-items: center;
   gap: 7px;
   padding: 0 10px;
-  border: 1px solid #e5e2dc;
-  border-radius: 5px;
+  border: 2px solid rgba(48, 43, 50, 0.48);
+  border-radius: 9px 7px 10px 8px;
   background: rgba(255, 254, 250, 0.75);
   color: #77716d;
   font-size: 10px;
   font-weight: 600;
+  font-family: var(--hand-font);
+  box-shadow: 2px 2px 0 rgba(48, 43, 50, 0.1);
   cursor: pointer;
 }
 
 .copy-link-button:hover,
 .leave-button:hover {
-  border-color: #d8cfc4;
-  background: #fffefa;
+  border-color: var(--ink);
+  background: #fff7dc;
 }
 
 .leave-button {
-  border-color: transparent;
-  background: transparent;
+  border-color: rgba(48, 43, 50, 0.3);
+  background: var(--paper);
 }
 
 .game-main {
@@ -639,8 +746,8 @@ a:focus-visible {
   position: relative;
   padding: 35px 38px 30px;
   background:
-    radial-gradient(circle at 93% 20%, rgba(225, 219, 255, 0.57), transparent 25%),
-    linear-gradient(130deg, #fffefa 57%, #fbf8ff);
+    radial-gradient(circle at 93% 20%, rgba(225, 219, 255, 0.34), transparent 25%),
+    #fff9e9;
 }
 
 .lobby-welcome h1 {
@@ -661,9 +768,9 @@ a:focus-visible {
   gap: 12px;
   margin-top: 24px;
   padding: 11px 12px;
-  border: 1px solid #eeebe5;
-  border-radius: 8px;
-  background: rgba(255, 254, 250, 0.86);
+  border: 2px dashed #8e8279;
+  border-radius: 11px 8px 12px 9px;
+  background: #fffdf6;
 }
 
 .invite-icon {
@@ -671,7 +778,8 @@ a:focus-visible {
   height: 34px;
   display: grid;
   place-items: center;
-  border-radius: 8px;
+  border: 2px solid rgba(48, 43, 50, 0.22);
+  border-radius: 9px 7px 10px 8px;
   background: #fbe9e1;
   color: #d87958;
   font-size: 17px;
@@ -741,7 +849,7 @@ a:focus-visible {
   display: flex;
   align-items: center;
   gap: 11px;
-  border-top: 1px solid #f1efea;
+  border-top: 1px dashed #d4cbbb;
 }
 
 .player-avatar {
@@ -750,7 +858,8 @@ a:focus-visible {
   display: grid;
   flex: 0 0 auto;
   place-items: center;
-  border-radius: 10px;
+  border: 2px solid rgba(48, 43, 50, 0.23);
+  border-radius: 11px 8px 12px 9px;
   color: #524d56;
   font-family: "Space Grotesk", sans-serif;
   font-size: 12px;
@@ -776,7 +885,8 @@ a:focus-visible {
 
 .host-badge {
   padding: 4px 6px;
-  border-radius: 3px;
+  border: 1px dashed #9f7956;
+  border-radius: 5px 4px 6px 4px;
   background: #f4ede2;
   color: #a27b4f;
   font-size: 7px;
@@ -784,13 +894,15 @@ a:focus-visible {
 
 .ready-tag {
   padding: 5px 7px;
-  border-radius: 4px;
+  border: 1px dashed #aaa29a;
+  border-radius: 6px 4px 7px 5px;
   background: #f5f3ef;
   color: #a7a29b;
   font-size: 7px;
 }
 
 .ready-tag--yes {
+  border-color: #6a9c71;
   background: #eaf5ec;
   color: #6a9c71;
 }
@@ -806,13 +918,14 @@ a:focus-visible {
   display: grid;
   place-items: center;
   border: 1px dashed #d9d4cd;
-  border-radius: 10px;
+  border-radius: 11px 8px 12px 9px;
   color: #b7b1a9;
   font-size: 16px;
 }
 
 .button-ready {
   margin-top: 15px;
+  border-color: #477a53;
   background: #e5f4e8;
   color: #579466;
 }
@@ -832,7 +945,8 @@ a:focus-visible {
   height: 39px;
   display: grid;
   place-items: center;
-  border-radius: 11px;
+  border: 2px solid rgba(48, 43, 50, 0.22);
+  border-radius: 11px 8px 12px 9px;
   background: #edeaff;
   color: #786dd0;
   font-size: 19px;
@@ -903,7 +1017,7 @@ a:focus-visible {
   justify-content: space-between;
   gap: 12px;
   padding: 10px 0;
-  border-bottom: 1px solid #f0eee9;
+  border-bottom: 1px dashed #d4cbbb;
   color: #8e8984;
   font-size: 10px;
   text-transform: capitalize;
@@ -1006,8 +1120,8 @@ a:focus-visible {
   justify-content: center;
   gap: 7px;
   padding: 8px 10px;
-  border: 1px solid #eae6de;
-  border-radius: 6px;
+  border: 2px solid #766c68;
+  border-radius: 9px 7px 10px 8px;
   background: #fffefa;
   color: #55504c;
 }
@@ -1024,7 +1138,7 @@ a:focus-visible {
 }
 
 .timer-pill--urgent {
-  border-color: #f2c0ae;
+  border-color: #d26347;
   background: #fff2ec;
   color: #d26347;
   animation: timer-pulse 1s infinite alternate;
@@ -1042,8 +1156,8 @@ a:focus-visible {
   gap: 13px;
   margin-bottom: 9px;
   padding: 8px 12px;
-  border: 1px solid #e9e5dd;
-  border-radius: 7px;
+  border: 2px dashed #91857b;
+  border-radius: 11px 8px 12px 9px;
   background: rgba(255, 254, 250, 0.78);
 }
 
@@ -1093,7 +1207,7 @@ a:focus-visible {
   align-items: center;
   justify-content: space-between;
   padding: 0 13px;
-  border-bottom: 1px solid #efede8;
+  border-bottom: 2px dashed #d4cbbb;
   color: #aaa49e;
   font-size: 7px;
 }
@@ -1119,6 +1233,8 @@ a:focus-visible {
     linear-gradient(90deg, rgba(142, 132, 117, 0.05) 1px, transparent 1px),
     #fffefa;
   background-size: 24px 24px;
+  outline: 2px dashed rgba(48, 43, 50, 0.24);
+  outline-offset: -6px;
 }
 
 .drawing-canvas {
@@ -1160,11 +1276,17 @@ a:focus-visible {
 .game-over-card {
   width: min(355px, 100%);
   padding: 24px;
-  border: 1px solid rgba(66, 58, 49, 0.1);
-  border-radius: 10px;
+  border: 2px solid #5b514c;
+  border-radius: 15px 11px 16px 12px;
   background: #fffefa;
-  box-shadow: 0 18px 55px rgba(55, 47, 39, 0.14);
+  box-shadow: 4px 5px 0 rgba(48, 43, 50, 0.16);
   text-align: center;
+}
+
+.word-picker {
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .word-picker h2,
@@ -1199,8 +1321,8 @@ a:focus-visible {
   align-items: center;
   justify-content: space-between;
   padding: 0 12px;
-  border: 1px solid #ebe8e2;
-  border-radius: 5px;
+  border: 2px solid #766c68;
+  border-radius: 9px 7px 10px 8px;
   background: #fffefa;
   color: #484340;
   font-family: "Space Grotesk", sans-serif;
@@ -1212,8 +1334,8 @@ a:focus-visible {
 }
 
 .word-choice:hover {
-  border-color: #f1b49d;
-  background: #fff7f2;
+  border-color: var(--orange-dark);
+  background: #fff4e8;
   color: #d36d4d;
 }
 
@@ -1274,7 +1396,8 @@ a:focus-visible {
 .round-result-card > strong {
   display: inline-block;
   padding: 6px 9px;
-  border-radius: 5px;
+  border: 1px dashed #5d9866;
+  border-radius: 7px 5px 8px 6px;
   background: #e8f4e9;
   color: #5d9866;
   font-family: "DM Mono", monospace;
@@ -1295,7 +1418,7 @@ a:focus-visible {
 
 .final-score-list {
   margin: 15px 0;
-  border-top: 1px solid #f0eee9;
+  border-top: 1px dashed #d4cbbb;
 }
 
 .final-score-list > div {
@@ -1303,7 +1426,7 @@ a:focus-visible {
   align-items: center;
   gap: 10px;
   padding: 8px 2px;
-  border-bottom: 1px solid #f0eee9;
+  border-bottom: 1px dashed #d4cbbb;
   text-align: left;
 }
 
@@ -1330,7 +1453,7 @@ a:focus-visible {
   align-items: center;
   gap: 11px;
   padding: 8px 12px;
-  border-top: 1px solid #efede8;
+  border-top: 2px dashed #d4cbbb;
   background: #fffefa;
 }
 
@@ -1348,13 +1471,13 @@ a:focus-visible {
   width: 17px;
   height: 17px;
   padding: 0;
-  border: 1px solid rgba(54, 48, 43, 0.12);
-  border-radius: 50%;
+  border: 2px solid rgba(48, 43, 50, 0.42);
+  border-radius: 42% 58% 47% 53%;
   cursor: pointer;
 }
 
 .color-swatch--selected {
-  outline: 2px solid #514b47;
+  outline: 2px dashed #302b32;
   outline-offset: 2px;
 }
 
@@ -1389,8 +1512,8 @@ a:focus-visible {
 }
 
 .brush-size-button--selected {
-  border-color: #e8e3dc;
-  background: #f8f6f1;
+  border: 1px dashed #6e625d;
+  background: #fff2cc;
 }
 
 .brush-size-button i {
@@ -1421,8 +1544,8 @@ a:focus-visible {
 
 .tool-action:hover:not(:disabled),
 .tool-action--active {
-  border-color: #ece7df;
-  background: #f7f4ef;
+  border: 1px dashed #766c68;
+  background: #fff2cc;
   color: #4a4541;
 }
 
@@ -1475,7 +1598,8 @@ a:focus-visible {
   height: 27px;
   display: grid;
   place-items: center;
-  border-radius: 8px;
+  border: 1px solid rgba(48, 43, 50, 0.16);
+  border-radius: 9px 7px 10px 8px;
   background: #efedff;
   color: #8376d3;
   font-size: 14px;
@@ -1492,7 +1616,7 @@ a:focus-visible {
   align-items: center;
   gap: 7px;
   padding: 5px 0;
-  border-top: 1px solid #f1efea;
+  border-top: 1px dashed #d4cbbb;
 }
 
 .score-player--drawing .score-avatar {
@@ -1575,16 +1699,16 @@ a:focus-visible {
   display: flex;
   gap: 3px;
   padding: 3px;
-  border: 1px solid #efede8;
-  border-radius: 5px;
-  background: #f8f6f1;
+  border: 2px dashed #91857b;
+  border-radius: 9px 7px 10px 8px;
+  background: #f8f2e3;
 }
 
 .chat-mode-switch button {
   flex: 1;
   padding: 5px 8px;
   border: 0;
-  border-radius: 3px;
+  border-radius: 6px 4px 7px 5px;
   background: transparent;
   color: #96908a;
   font-size: 8px;
@@ -1593,7 +1717,7 @@ a:focus-visible {
 
 .chat-mode-switch button.is-selected {
   background: #fffefa;
-  box-shadow: 0 1px 3px rgba(45, 37, 28, 0.1);
+  box-shadow: 1px 2px 0 rgba(48, 43, 50, 0.13);
   color: #615988;
   font-weight: 700;
 }
@@ -1664,7 +1788,8 @@ a:focus-visible {
 
 .chat-message--correct {
   padding: 7px 8px;
-  border-radius: 5px;
+  border: 1px dashed #6a9c71;
+  border-radius: 8px 6px 9px 7px;
   background: #ebf6e9;
 }
 
@@ -1690,7 +1815,7 @@ a:focus-visible {
   display: flex;
   gap: 6px;
   padding-top: 9px;
-  border-top: 1px solid #efede8;
+  border-top: 2px dashed #d4cbbb;
 }
 
 .chat-input-form input {
@@ -1698,8 +1823,8 @@ a:focus-visible {
   height: 35px;
   flex: 1;
   padding: 0 10px;
-  border: 1px solid #e9e6df;
-  border-radius: 5px;
+  border: 2px solid #766c68;
+  border-radius: 8px 6px 9px 7px;
   outline: none;
   background: #fffefa;
   font-size: 9px;
@@ -1708,10 +1833,11 @@ a:focus-visible {
 .chat-input-form button {
   width: 35px;
   height: 35px;
-  border: 0;
-  border-radius: 5px;
+  border: 2px solid var(--ink);
+  border-radius: 9px 7px 10px 8px;
   background: var(--orange);
   color: #fff;
+  font-family: var(--hand-font);
   font-size: 14px;
   cursor: pointer;
 }
@@ -1752,12 +1878,13 @@ a:focus-visible {
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
-  border: 1px solid #efd0c2;
-  border-radius: 7px;
+  border: 2px dashed #a87965;
+  border-radius: 11px 8px 12px 9px;
   background: #fffefa;
-  box-shadow: 0 10px 30px rgba(45, 37, 28, 0.12);
+  box-shadow: 3px 4px 0 rgba(48, 43, 50, 0.12);
   color: #8e5747;
   font-size: 11px;
+  font-family: var(--hand-font);
 }
 
 .toast-dot {
@@ -1789,16 +1916,221 @@ a:focus-visible {
   font-size: 9px;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.game-loading-shell {
+  width: min(1440px, calc(100% - 48px));
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.game-loading-header {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px dashed rgba(48, 43, 50, 0.25);
+}
+
+.skeleton-block,
+.skeleton-canvas-board {
+  display: block;
+  border: 1px dashed rgba(48, 43, 50, 0.2);
+  border-radius: 9px 7px 10px 8px;
+  background: linear-gradient(105deg, #eee4cf 8%, #fff8e8 18%, #eee4cf 33%);
+  background-size: 220% 100%;
+  animation: doodle-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes doodle-shimmer {
+  to { background-position-x: -220%; }
+}
+
+.skeleton-brand {
+  width: 150px;
+  height: 30px;
+}
+
+.skeleton-room-code {
+  width: 115px;
+  height: 16px;
+}
+
+.skeleton-header-button {
+  width: 82px;
+  height: 32px;
+}
+
+.game-loading-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 302px;
+  gap: 18px;
+  align-items: start;
+  padding: 25px 0 36px;
+}
+
+.game-loading-center {
+  min-width: 0;
+}
+
+.game-loading-status {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.skeleton-status-short {
+  width: 76px;
+  height: 31px;
+}
+
+.skeleton-status-long {
+  width: min(175px, 30%);
+  height: 18px;
+}
+
+.skeleton-timer {
+  width: 76px;
+  height: 35px;
+}
+
+.skeleton-word {
+  height: 45px;
+  margin-bottom: 9px;
+}
+
+.game-loading-canvas {
+  overflow: hidden;
+  border: 2px solid rgba(48, 43, 50, 0.3);
+  border-radius: 15px 12px 16px 13px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.skeleton-canvas-labels {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 13px;
+  border-bottom: 2px dashed #d4cbbb;
+}
+
+.skeleton-label-short {
+  width: 75px;
+  height: 9px;
+}
+
+.skeleton-label-long {
+  width: min(185px, 35%);
+  height: 9px;
+}
+
+.skeleton-canvas-board {
+  aspect-ratio: 1100 / 620;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(105deg, rgba(238, 228, 207, 0.72) 8%, rgba(255, 248, 232, 0.72) 18%, rgba(238, 228, 207, 0.72) 33%),
+    linear-gradient(rgba(142, 132, 117, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(142, 132, 117, 0.05) 1px, transparent 1px),
+    #fffefa;
+  background-size: 220% 100%, 24px 24px, 24px 24px, auto;
+  animation: doodle-shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-canvas-toolbar {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 8px 12px;
+  border-top: 2px dashed #d4cbbb;
+}
+
+.skeleton-tool-colors {
+  width: 42%;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.skeleton-tool-buttons {
+  width: 38%;
+  height: 26px;
+}
+
+.skeleton-caption {
+  width: 34%;
+  height: 11px;
+  margin: 10px 4px 0;
+}
+
+.game-loading-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.game-loading-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 17px 16px;
+  border: 2px solid rgba(48, 43, 50, 0.3);
+  border-radius: 15px 12px 16px 13px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.game-loading-scoreboard {
+  min-height: 218px;
+}
+
+.game-loading-chat {
+  min-height: 342px;
+}
+
+.skeleton-card-heading {
+  width: 72%;
+  height: 27px;
+}
+
+.skeleton-player-row {
+  width: 100%;
+  height: 35px;
+}
+
+.skeleton-chat-area {
+  flex: 1;
+  min-height: 175px;
+}
+
+.skeleton-chat-input {
+  height: 35px;
+}
+
 @media (max-width: 1080px) {
   .home-shell {
     width: min(900px, calc(100% - 44px));
   }
 
-  .entry-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(330px, 0.82fr);
+  .play-layout {
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: 13px;
   }
 
-  .play-layout {
+  .game-loading-layout {
     grid-template-columns: minmax(0, 1fr) 270px;
     gap: 13px;
   }
@@ -1826,8 +2158,9 @@ a:focus-visible {
     width: calc(100% - 32px);
   }
 
-  .entry-grid {
-    grid-template-columns: 1fr;
+  .home-shell {
+    padding-right: 26px;
+    padding-left: 84px;
   }
 
   .side-entry-column {
@@ -1852,6 +2185,10 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .game-loading-layout {
+    grid-template-columns: 1fr;
+  }
+
   .game-sidebar {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
@@ -1861,11 +2198,53 @@ a:focus-visible {
   .chat-card {
     grid-row: span 2;
   }
+
+  .game-loading-sidebar {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: stretch;
+  }
+
+  .game-loading-chat {
+    grid-row: span 2;
+  }
 }
 
 @media (max-width: 560px) {
   .home-shell,
   .game-shell {
+    width: calc(100% - 24px);
+  }
+
+  .home-shell {
+    padding: 0 34px 24px;
+    background:
+      linear-gradient(
+        to right,
+        transparent 0,
+        transparent 19px,
+        rgba(199, 66, 57, 0.72) 20px,
+        rgba(199, 66, 57, 0.72) 23px,
+        transparent 24px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        #fffdf3 0,
+        #fffdf3 34px,
+        rgba(77, 132, 174, 0.32) 35px,
+        #fffdf3 36px
+      );
+  }
+
+  .home-main {
+    padding: 30px 0;
+  }
+
+  .home-name-card.entry-card {
+    padding: 0 0 10px;
+  }
+
+  .game-loading-shell {
     width: calc(100% - 24px);
   }
 
@@ -1891,8 +2270,8 @@ a:focus-visible {
   }
 
   .side-entry-column {
-    display: flex;
-    gap: 11px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 13px;
   }
 
   .join-card,
@@ -1902,6 +2281,23 @@ a:focus-visible {
 
   .game-header {
     height: 61px;
+  }
+
+  .game-loading-header {
+    height: 61px;
+  }
+
+  .skeleton-brand {
+    width: 105px;
+  }
+
+  .skeleton-room-code {
+    width: 68px;
+  }
+
+  .skeleton-header-button {
+    width: 55px;
+    height: 28px;
   }
 
   .brand-lockup--compact .brand-mark {
@@ -2042,6 +2438,10 @@ a:focus-visible {
     aspect-ratio: 1 / 0.73;
   }
 
+  .skeleton-canvas-board {
+    aspect-ratio: 1 / 0.73;
+  }
+
   .drawing-toolbar {
     min-height: 49px;
     flex-wrap: wrap;
@@ -2084,6 +2484,10 @@ a:focus-visible {
     display: flex;
   }
 
+  .game-loading-sidebar {
+    display: flex;
+  }
+
   .chat-card {
     min-height: 260px;
   }
@@ -2113,6 +2517,58 @@ a:focus-visible {
   }
 }
 
+@media (max-width: 360px) {
+  .home-shell .settings-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .join-code-row {
+    flex-direction: column;
+  }
+
+  .join-code-row .button-dark {
+    width: 100%;
+  }
+
+  .game-header {
+    gap: 7px;
+  }
+
+  .brand-lockup--compact {
+    gap: 6px;
+  }
+
+  .brand-lockup--compact .brand-mark {
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+  }
+
+  .brand-lockup--compact .brand-name {
+    font-size: 12px;
+  }
+
+  .game-header-center {
+    gap: 3px;
+  }
+
+  .game-room-code {
+    font-size: 9px;
+  }
+
+  .copy-link-button {
+    gap: 3px;
+    padding: 0 4px;
+    font-size: 7px;
+  }
+
+  .leave-button {
+    gap: 3px;
+    padding: 0 3px;
+    font-size: 8px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2121,5 +2577,10 @@ a:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .skeleton-block,
+  .skeleton-canvas-board {
+    animation: none;
   }
 }

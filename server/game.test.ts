@@ -130,7 +130,7 @@ describe("game", () => {
     host.emit("start_game");
 
     const [drawerState, guesserState] = await Promise.all([hostChoosing, guestChoosing]);
-    expect(drawerState.wordOptions?.length).toBeGreaterThan(0);
+    expect(drawerState.wordOptions).toHaveLength(DEFAULT_SETTINGS.wordCount);
     expect(guesserState.wordOptions).toBeUndefined();
     const word = drawerState.wordOptions?.[0];
     if (!word) throw new Error("The drawer did not receive any word choices.");

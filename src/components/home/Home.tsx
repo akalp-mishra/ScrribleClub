@@ -45,14 +45,15 @@ export default function Home({
 
       <main className="home-main">
         <section className="entry-card home-name-card">
-          <label className="field-label" htmlFor="player-name">PLAYER NAME</label>
+          <h2 id="player-name-heading" className="home-section-title">Your name</h2>
           <input
             id="player-name"
             className="text-input"
+            aria-labelledby="player-name-heading"
             value={playerName}
             onChange={(event) => setPlayerName(event.target.value)}
             maxLength={20}
-            placeholder="Enter your name"
+            placeholder="Write your name here"
             autoComplete="nickname"
           />
         </section>
@@ -77,7 +78,7 @@ export default function Home({
                   value={joinCode}
                   onChange={(event) => setJoinCode(event.target.value.toUpperCase().slice(0, 8))}
                   maxLength={8}
-                  placeholder="Enter room code"
+                  placeholder="Write code"
                   autoComplete="off"
                 />
                 <button type="button" className="button button-dark" onClick={() => onJoin()}>
@@ -88,7 +89,7 @@ export default function Home({
 
             <section className="public-rooms-card">
               <div className="public-rooms-heading">
-                <h2>Open rooms</h2>
+                <h2 className="home-section-title home-section-title--compact">Open rooms</h2>
                 <span className="live-count"><i /> {publicRooms.length}</span>
               </div>
               {publicRooms.length ? (

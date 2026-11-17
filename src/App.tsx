@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import {
   DEFAULT_SETTINGS,
   type RoomSettings,
 } from "../shared/protocol.js";
-import GameRoom from "./components/game/GameRoom.js";
+import GameLoadingSkeleton from "./components/game/GameLoadingSkeleton.js";
 import Home from "./components/home/Home.js";
 import { useGameSocket } from "./hooks/useGameSocket.js";
+
+const GameRoom = lazy(() => import("./components/game/GameRoom.js"));
 
 function App() {
   const [playerName, setPlayerName] = useState("");
@@ -61,14 +63,16 @@ function App() {
   return (
     <>
       {room ? (
-        <GameRoom
-          room={room}
-          messages={messages}
-          playerId={playerId}
-          leaveRoom={actions.leaveRoom}
-          showError={reportError}
-          actions={actions}
-        />
+        <Suspense fallback={<GameLoadingSkeleton />}>
+          <GameRoom
+            room={room}
+            messages={messages}
+            playerId={playerId}
+            leaveRoom={actions.leaveRoom}
+            showError={reportError}
+            actions={actions}
+          />
+        </Suspense>
       ) : (
         <Home
           connected={connected}
