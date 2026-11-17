@@ -1,0 +1,255 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - main:
+      - generic:
+        - generic:
+          - button:
+            - banner:
+              - generic:
+                - link "Mermaid Flow launches on Product Hunt November 18th. Build it once, run it the same way every time. Learn more":
+                  - /url: https://mermaid.ai/products/flow?utm_campaign=flow_hunt&utm_medium=banner_ad&utm_source=mermaid_live_editor
+                  - generic: Mermaid Flow launches on Product Hunt November 18th. Build it once, run it the same way every time.
+                  - generic: Learn more
+              - button "Dismiss banner"
+        - navigation:
+          - generic:
+            - button
+            - link "Mermaid Live Editor":
+              - /url: /
+          - generic:
+            - button:
+              - button
+            - separator
+            - button "History"
+            - button "Share"
+            - separator
+            - button "Mermaid Chart Contact sales":
+              - generic:
+                - link "Mermaid Chart Contact sales":
+                  - /url: https://mermaid.ai/contact-us?contactSubject=contactSales&utm_campaign=contact_sales&utm_medium=button&utm_source=mermaid_live_editor
+                  - img "Mermaid Chart"
+                  - text: Contact sales
+            - button "Mermaid Chart Save diagram":
+              - generic:
+                - link "Mermaid Chart Save diagram":
+                  - /url: https://mermaid.ai/app/plugin/save?state=pako:eNpVjLFuwkAQRH9ltVUi4R9wgQR2QoMEBVUcipW99p3gbk_rs1Bk-985A5GS6UbvzYxYS8OYY3uVW21II5zKbw8pm6owavvoqD9Dlq2nHUdw4vlngu3bTqA3EoL13fvT3y4SFON-0Riisf4yP1Hx2B88T1BWewpRwvkvOd1kgo_KHk26_0-Mclp9Vi3lLWU1KRSkDwVX2KltMI868Aodq6Ol4jgnFMh_ibhfqjJ0BtPFtU9tCA1FLi11Si9lvgMWKFYF&utm_source=mermaid_live_editor&utm_medium=save_diagram
+                  - img "Mermaid Chart"
+                  - text: Save diagram
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - toolbar:
+                      - generic:
+                        - list:
+                          - tab "Code"
+                          - generic:
+                            - separator
+                          - tab "Config"
+                      - link "Docs":
+                        - /url: https://mermaid.js.org
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - code:
+                              - generic:
+                                - textbox "Editor content"
+                                - textbox [aria-hidden]
+                                - generic [aria-hidden]:
+                                  - generic [aria-hidden]:
+                                    - generic: "1"
+                                    - generic: "2"
+                                    - generic: "3"
+                                    - generic: "4"
+                                    - generic: "5"
+                                    - generic: "6"
+                                - generic:
+                                  - generic [aria-hidden]:
+                                    - generic: flowchart TD
+                                    - generic: A[Christmas] -->|Get money| B(Go shopping)
+                                    - generic: "B --> C{Let me think}"
+                                    - generic: C -->|One| D[Laptop]
+                                    - generic: C -->|Two| E[iPhone]
+                                    - generic: C -->|Three| F[fa:fa-car Car]
+                  - generic:
+                    - generic:
+                      - toolbar:
+                        - menubar: Sample Diagrams
+                      - generic:
+                        - generic:
+                          - generic:
+                            - button "Flowchart"
+                            - button "Choose a Flowchart example"
+                          - generic:
+                            - button "Class"
+                            - button "Choose a Class example"
+                          - generic:
+                            - button "Sequence"
+                            - button "Choose a Sequence example"
+                          - generic:
+                            - button "Entity Relationship"
+                            - button "Choose a Entity Relationship example"
+                          - generic:
+                            - button "State"
+                            - button "Choose a State example"
+                          - generic:
+                            - button "Mindmap"
+                            - button "Choose a Mindmap example"
+                          - generic:
+                            - button "Architecture"
+                            - button "Choose a Architecture example"
+                          - generic:
+                            - button "Block"
+                            - button "Choose a Block example"
+                          - generic:
+                            - button "C4"
+                            - button "Choose a C4 example"
+                          - generic:
+                            - button "Cynefin Framework"
+                            - button "Choose a Cynefin Framework example"
+                          - generic:
+                            - button "Event Modeling"
+                            - button "Choose a Event Modeling example"
+                          - generic:
+                            - button "Gantt"
+                            - button "Choose a Gantt example"
+                          - generic:
+                            - button "Git"
+                            - button "Choose a Git example"
+                          - generic:
+                            - button "Ishikawa"
+                            - button "Choose a Ishikawa example"
+                          - generic:
+                            - button "Kanban"
+                            - button "Choose a Kanban example"
+                          - generic:
+                            - button "Packet"
+                            - button "Choose a Packet example"
+                          - generic:
+                            - button "Pie"
+                            - button "Choose a Pie example"
+                          - generic:
+                            - button "Quadrant"
+                            - button "Choose a Quadrant example"
+                          - generic:
+                            - button "Radar"
+                            - button "Choose a Radar example"
+                          - generic:
+                            - button "Railroad (ABNF)"
+                            - button "Choose a Railroad (ABNF) example"
+                          - generic:
+                            - button "Railroad (EBNF)"
+                            - button "Choose a Railroad (EBNF) example"
+                          - generic:
+                            - button "Railroad (IR)"
+                            - button "Choose a Railroad (IR) example"
+                          - generic:
+                            - button "Railroad (PEG)"
+                            - button "Choose a Railroad (PEG) example"
+                          - generic:
+                            - button "Requirement"
+                          - generic:
+                            - button "Sankey"
+                            - button "Choose a Sankey example"
+                          - generic:
+                            - button "Swimlane"
+                            - button "Choose a Swimlane example"
+                          - generic:
+                            - button "Timeline"
+                            - button "Choose a Timeline example"
+                          - generic:
+                            - button "TreeView"
+                            - button "Choose a TreeView example"
+                          - generic:
+                            - button "Treemap"
+                            - button "Choose a Treemap example"
+                          - generic:
+                            - button "Use Case"
+                            - button "Choose a Use Case example"
+                          - generic:
+                            - button "User Journey"
+                            - button "Choose a User Journey example"
+                          - generic:
+                            - button "Venn"
+                            - button "Choose a Venn example"
+                          - generic:
+                            - button "Wardley Maps"
+                            - button "Choose a Wardley Maps example"
+                          - generic:
+                            - button "XY"
+                            - button "Choose a XY example"
+                          - generic:
+                            - button "ZenUML"
+                    - generic:
+                      - toolbar:
+                        - menubar: Actions
+              - separator
+              - generic:
+                - generic:
+                  - generic:
+                    - button "Reset view"
+                    - separator
+                    - button "Zoom out"
+                    - button "Zoom in"
+                    - separator
+                    - link "Open Live Preview":
+                      - /url: /view?live=f0a469db-9676-49dc-8548-e126dc6c1e52#pako:eNpVjLFuwkAQRH9ltVUi4R9wgQR2QoMEBVUcipW99p3gbk_rs1Bk-985A5GS6UbvzYxYS8OYY3uVW21II5zKbw8pm6owavvoqD9Dlq2nHUdw4vlngu3bTqA3EoL13fvT3y4SFON-0Riisf4yP1Hx2B88T1BWewpRwvkvOd1kgo_KHk26_0-Mclp9Vi3lLWU1KRSkDwVX2KltMI868Aodq6Ol4jgnFMh_ibhfqjJ0BtPFtU9tCA1FLi11Si9lvgMWKFYF
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: v12.3.0
+                      - button "Privacy & Security":
+                        - button
+                      - separator
+                      - button "Switch to dark theme"
+                - generic:
+                  - generic:
+                    - button "Hand-Drawn"
+                    - button "Background Grid" [pressed]
+  - dialog "Try the full Mermaid experience" [ref=e5]:
+    - generic [ref=e6]:
+      - img "Mermaid Chart" [ref=e7]
+      - heading "Try the full Mermaid experience" [level=2] [ref=e8]
+      - generic [ref=e9]: Free forever, with Plus features free for 7 days.
+    - list [ref=e10]:
+      - listitem [ref=e11]:
+        - generic [ref=e13]:
+          - paragraph [ref=e14]: AI diagram generation
+          - paragraph [ref=e15]: Describe what you need, AI builds it
+      - listitem [ref=e16]:
+        - generic [ref=e18]:
+          - paragraph [ref=e19]: Visual drag-and-drop editor
+          - paragraph [ref=e20]: Edit diagrams without writing code
+      - listitem [ref=e21]:
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: Unlimited diagram storage
+          - paragraph [ref=e25]: Save and organize all your diagrams
+      - listitem [ref=e26]:
+        - generic [ref=e28]:
+          - paragraph [ref=e29]: Team collaboration
+          - paragraph [ref=e30]: Share, comment, and edit together in real-time
+    - generic [ref=e31]:
+      - button [active] [ref=e32]:
+        - button "Start free trial" [ref=e34]
+      - generic "Your diagram will be sent to the external service" [ref=e37]:
+        - generic [ref=e40]:
+          - text: Opens
+          - generic [ref=e41]: mermaid.ai
+      - button "Stay on mermaid.live" [ref=e42]
+    - generic [ref=e43]:
+      - paragraph [ref=e44]: Trusted by 5M people and over 200k companies
+      - generic [ref=e45]:
+        - img "Google" [ref=e46]
+        - img "Microsoft" [ref=e53]
+        - img "Atlassian" [ref=e59]
+        - img "Amazon" [ref=e62]
+    - link "mermaid.ai Privacy Policy" [ref=e66] [cursor=pointer]:
+      - /url: https://mermaid.ai/privacy-policy
+    - button "Close" [ref=e67]
+  - generic:
+    - alert
+    - alert

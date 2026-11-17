@@ -37,6 +37,38 @@ Open `http://localhost:3001`. The Express server serves the built client and han
 
 ## How WebSockets, the canvas, and game logic work
 
+### Architecture overview
+
+```mermaid
+flowchart LR
+  subgraph Client["Browser"]
+    UI["React UI"]
+    Hook["useGameSocket"]
+    ClientSocket["Socket.IO client"]
+    Canvas["DrawingCanvas - HTML Canvas 2D"]
+    UI -->|actions| Hook
+    Hook -->|room and message state| UI
+    Hook -->|Socket.IO events| ClientSocket
+    ClientSocket -->|server events| Hook
+    UI -->|stroke state and drawing controls| Canvas
+    Canvas -->|normalized pointer points| UI
+  end
+
+  subgraph Server["Node.js server"]
+    SocketIO["Socket.IO server"]
+    Handlers["Event handlers - server/index.ts"]
+    Rooms["RoomManager"]
+    Game["GameRoom - rules and room state"]
+    Words["word-list.json"]
+    SocketIO --> Handlers --> Rooms --> Game
+    Words --> Game
+    Game -->|personalized state and stroke updates| SocketIO
+  end
+
+  ClientSocket -->|room actions and drawing events| SocketIO
+  SocketIO -->|room events and personalized state| ClientSocket
+```
+
 ### Room connection and state
 
 The React UI is split into pages and components under `src/components/`. `src/hooks/useGameSocket.ts` creates the Socket.IO client, exposes game actions, and stores the latest room state and messages. The client sends events such as `create_room`, `join_room`, `start_game`, `word_chosen`, and `guess`.
@@ -52,6 +84,25 @@ The server broadcasts room state to each player individually so it can keep secr
 At the start of a stroke, the client sends `draw_start` with its first point and the stroke's color, size, and tool. Each subsequent pointer-move event sends one `draw_move` point—not one message per pixel. The server verifies that the sender is the current drawer, validates the point and drawing options, stores it, and broadcasts the stroke update to the room. Undo and clear operations update the server's stroke list and send the new canvas state.
 
 Clients keep the shared stroke list in React state and redraw it on their canvases. The canvas uses a logical `1100 × 620` coordinate space and resizes its backing store for the displayed size and device pixel ratio; the network sends stroke data, not canvas images.
+
+```mermaid
+sequenceDiagram
+  participant Drawer as Drawer browser
+  participant Socket as Socket.IO server
+  participant Room as GameRoom
+  participant Guesser as Guesser browser
+
+  Drawer->>Socket: Send draw_start with point and settings or draw_move with point
+  Socket->>Room: Route drawing event to room
+  Room-->>Socket: Validate and store stroke, then emit update to room
+  Socket-->>Drawer: Deliver updated stroke
+  Socket-->>Guesser: Deliver the same stroke
+  Guesser->>Socket: Send guess text
+  Socket->>Room: Route guess
+  Room-->>Socket: Score guess and emit personalized game_state
+  Socket-->>Drawer: Deliver drawer state
+  Socket-->>Guesser: Deliver guesser state
+```
 
 ### Game flow and scoring
 
