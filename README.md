@@ -61,18 +61,3 @@ npm run test:watch
 
 Vitest runs the server test suite; use `npm test` for a single run or `npm run test:watch` while developing. The tests cover guess normalization, settings bounds, secret-word privacy, real-time stroke delivery, and scoring through two connected game clients.
 
-## Deploy to Render
-
-`render.yaml` defines a single Node web service. Connect this repository to Render and deploy it as a Blueprint, or create a Web Service with:
-
-- Build command: `npm ci --include=dev && npm run build`
-- Start command: `npm start`
-- Node version: `24`
-
-Express serves the frontend and Socket.IO from the same service, so no separate WebSocket host or client-origin setting is required. After deployment, test room creation, joining, drawing, guessing, and scoring at the Render URL.
-
-**Live URL:** pending deployment. This workspace has not been connected to a hosting account.
-
-## Deployment notes
-
-Rooms, scores, timers, and strokes are held in server memory. A server restart clears active games, and this first version is intended for a single server instance. Add shared storage and a Socket.IO adapter before scaling to multiple instances or persisting rooms.
