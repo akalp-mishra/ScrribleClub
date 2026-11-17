@@ -1,4 +1,0 @@
-[     989ms] [LOG] Current migration version: v-1. Migrating to v1. @ https://mermaid.live/_app/immutable/chunks/B7dLirLs.js:19
-[     989ms] [LOG] Applying migration 0: injectHistoryIDs. @ https://mermaid.live/_app/immutable/chunks/B7dLirLs.js:19
-[     990ms] [LOG] Applying migration 1: clearDefaultThemeConfig. @ https://mermaid.live/_app/immutable/chunks/B7dLirLs.js:19
-[    1435ms] [LOG] Registration successful, scope is: https://mermaid.live/ @ https://mermaid.live/_app/immutable/nodes/2.C3rlINXq.js:1
