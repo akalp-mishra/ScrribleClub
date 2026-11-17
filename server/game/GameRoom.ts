@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import type { Server } from "socket.io";
+import WORDS from "./word-list.json" with { type: "json" };
 import {
-  WORDS,
   type ChatMessage,
   type PublicPlayer,
   type PublicRoom,
